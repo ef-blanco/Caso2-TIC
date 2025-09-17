@@ -1,6 +1,8 @@
 package ClasesOpcionesEjecucion;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Opcion1GeneradorReferencias 
@@ -11,28 +13,40 @@ public class Opcion1GeneradorReferencias
      * de memoria
      */
 
-     public void generarReferencia(int tamanioPag, int filas, int columnas)
+     public void generarReferencia(int numProc, int tamanioPag, int filas, int columnas)
      {
+        //Cálculo del número de referencias y el número de páginas
         int nr = filas*columnas*3;
         int tamanioMatrices = nr*4;
         int numPag = (int) Math.ceilDiv(tamanioMatrices, nr);
 
         try{
-            File proc = new File("procX.txt");
+            String path = "proc"+((Integer)numProc).toString()+".txt";
+            File proc = new File(path);
             if(proc.createNewFile())
             {
-                System.out.println("Referencia al proceso X creada como");
+                System.out.println("Referencia al proceso "+((Integer)numProc).toString()+" creada como");
             }
             else{
                 System.out.println("Ya existe un archivo con ese nombre");
             }
+
+            BufferedWriter fWriter = new BufferedWriter(new FileWriter(path));
+            fWriter.write("TP="+((Integer)tamanioPag).toString());
+            fWriter.write("NF="+((Integer)filas).toString());
+            fWriter.write("NC="+((Integer)columnas).toString());
+            fWriter.write("NR="+((Integer)nr).toString());
+            fWriter.write("NP="+((Integer)numPag).toString());
+
+            //TODO:Falta escribir en el archivo las distintas posiciones de las matrices
+
+            fWriter.close();
         }
         catch(IOException e){
             System.out.println("Hubo un error");
             e.printStackTrace();
         }
         
-
 
      }
 }
