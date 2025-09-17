@@ -33,10 +33,15 @@ public class Opcion1GeneradorReferencias
 
             BufferedWriter fWriter = new BufferedWriter(new FileWriter(path));
             fWriter.write("TP="+((Integer)tamanioPag).toString());
+            fWriter.newLine();
             fWriter.write("NF="+((Integer)filas).toString());
+            fWriter.newLine();
             fWriter.write("NC="+((Integer)columnas).toString());
+            fWriter.newLine();
             fWriter.write("NR="+((Integer)nr).toString());
+            fWriter.newLine();
             fWriter.write("NP="+((Integer)numPag).toString());
+            fWriter.newLine();
 
             //Se escriben en el archivo las referencias de las distintas posiciones de las matrices
             int desplazamiento = 0;
@@ -61,6 +66,7 @@ public class Opcion1GeneradorReferencias
                         //Linea en formato MX: [i-j],pagina,desplazamiento,accion
                         String lineaRef = "M"+numMatriz+": "+"["+((Integer)i).toString()+"-"+((Integer)j).toString()+"],"+((Integer)pagina).toString()+","+((Integer)desplazamiento).toString()+","+accion;
                         fWriter.write(lineaRef);
+                        fWriter.newLine();
                     }
                 }
             }
