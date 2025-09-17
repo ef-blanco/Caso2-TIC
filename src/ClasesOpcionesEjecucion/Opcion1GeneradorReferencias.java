@@ -18,7 +18,7 @@ public class Opcion1GeneradorReferencias
         //Cálculo del número de referencias y el número de páginas
         int nr = filas*columnas*3;
         int tamanioMatrices = nr*4;
-        int numPag = (int) Math.ceilDiv(tamanioMatrices, nr);
+        int numPag = (int) Math.ceilDiv(tamanioMatrices, tamanioPag);
 
         try{
             String path = "./referencias_procs/proc"+((Integer)numProc).toString()+".txt";
@@ -67,6 +67,8 @@ public class Opcion1GeneradorReferencias
                         String lineaRef = "M"+numMatriz+": "+"["+((Integer)i).toString()+"-"+((Integer)j).toString()+"],"+((Integer)pagina).toString()+","+((Integer)desplazamiento).toString()+","+accion;
                         fWriter.write(lineaRef);
                         fWriter.newLine();
+                        
+                        desplazamiento = desplazamiento+4;
                     }
                 }
             }
