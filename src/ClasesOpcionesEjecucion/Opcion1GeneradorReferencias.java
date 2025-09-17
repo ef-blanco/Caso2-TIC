@@ -40,6 +40,19 @@ public class Opcion1GeneradorReferencias
 
             //TODO:Falta escribir en el archivo las distintas posiciones de las matrices
 
+            int MemDisponible = numPag*tamanioPag;
+            for(int i = 0; i<nr; i++)
+            {
+                //Primera Matriz
+                if(i<=(nr-1))
+                {
+                    if(i<=(columnas-1))
+                    {
+                        
+                    } 
+                }
+            }
+
             fWriter.close();
         }
         catch(IOException e){
