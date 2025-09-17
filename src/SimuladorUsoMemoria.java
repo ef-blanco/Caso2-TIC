@@ -1,3 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 public class SimuladorUsoMemoria 
 {
     /*
@@ -9,4 +15,45 @@ public class SimuladorUsoMemoria
      * de las ocpiones 1 y 2 de ejecución descirtas en el enunciado
      */
 
+    public static void main (String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("BIENVENIDO\n");
+        System.out.println("\n");
+        System.out.println("Ingrese la opción de ejecuión que desea usar:\n");
+        System.out.println("1.Generador de referencias\n");
+        System.out.println("2.Simulador de ejecución\n");
+        String opcion = scanner.nextLine();
+
+
+        if(opcion.equals("1"))
+        {
+            System.out.println("Ingrese la ruta del archivo con los datos de configuración:\n");
+            String rutaArchivo = scanner.nextLine();
+
+            try{
+                System.setIn(new FileInputStream(rutaArchivo));
+                scanner = new Scanner(System.in);
+            }
+            catch(FileNotFoundException e){
+                System.err.println("Archivo no encontrado "+rutaArchivo);
+            }
+
+            String linea = scanner.nextLine();
+            int TP = Integer.parseInt(linea.substring(3));
+            
+            linea = scanner.nextLine();
+            int NPROC = Integer.parseInt(linea.substring(6));
+            
+            linea = scanner.nextLine();
+            String tamanios = linea.substring(5);
+            //Tamaños de las matrices guardados como [2x2, 4x4, 3x4... ]
+            String[] listTamanios = tamanios.split(",");
+
+
+        }
+
+        scanner.close();
+        
+    }
 }
