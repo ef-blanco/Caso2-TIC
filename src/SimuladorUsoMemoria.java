@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import ClasesOpcionesEjecucion.Opcion1GeneradorReferencias;
@@ -41,6 +39,7 @@ public class SimuladorUsoMemoria
                 System.err.println("Archivo no encontrado "+rutaArchivo);
             }
 
+            //Se obtienen los datos del archivo de configuración
             String linea = scanner.nextLine();
             int TP = Integer.parseInt(linea.substring(3));
             
@@ -52,6 +51,12 @@ public class SimuladorUsoMemoria
             //Tamaños de las matrices guardados como [2x2, 4x4, 3x4... ]
             String[] listTamanios = tamanios.split(",");
 
+            /*
+             * Para cada proceso obtenemos la dimension de sus matrices y usamos el método generarReferencias
+             * de la clase Opcion1GeneradorReferencias para crear el txt con las referencias asociadas a dicho
+             * proceso
+             */
+        
             for(int p = 1; p<=NPROC; p++)
             {
                 String dimension = listTamanios[p-1];

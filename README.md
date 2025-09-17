@@ -1,18 +1,21 @@
-## Getting Started
+## Instrucciones para ejecutar la opción 1: generador de referencias
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Pasos:
+1. Empezar a correr el programa desde SimuladorUsoMemoria.java
+2. Cuando le pidan que opción seleccionar ingrese 1 en la consola
+3. Cuando el sistema le pide la dirección del archivo de configuración ingrese la ruta
+   del archivo correspondiente.
 
-## Folder Structure
+   *Recomendación 1*: Para esta parte ingrese ./archivos_config/**nombre_archivo**
 
-The workspace contains two folders by default, where:
+   Donde **nombre_archivo** es el nombre del archivo donde tiene los datos de configuración el cual
+   por debería estar ubicado en la carpeta del proyecto con nombre archivos_config
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+   *Recomendación 2*: Antes de cada ejecución asegúrese que no tiene archivos en referencias_procs
+   con nombres del tipo procX.txt. Por ejemplo, si tiene algún archivo con nombre proc1.txt y desea
+   crear un nuevo archivo con el mismo nombre, el programa no lo creara porque ya existe un archivo 
+   con dicho nombre
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+4. Si la ejecución es correcta, debería encontrar en la carpeta referencias_procs los arhivos txt que
+tienen las referencias para los procesos con la configuración indicada en el archivo de configuración
+que ingreso en el paso 2
