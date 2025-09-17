@@ -13,7 +13,7 @@ public class Opcion1GeneradorReferencias
      * de memoria
      */
 
-     public void generarReferencia(int numProc, int tamanioPag, int filas, int columnas)
+     public static void generarReferencia(int numProc, int tamanioPag, int filas, int columnas)
      {
         //Cálculo del número de referencias y el número de páginas
         int nr = filas*columnas*3;
@@ -25,7 +25,7 @@ public class Opcion1GeneradorReferencias
             File proc = new File(path);
             if(proc.createNewFile())
             {
-                System.out.println("Referencia al proceso "+((Integer)numProc).toString()+" creada como");
+                System.out.println("Referencia al proceso "+((Integer)numProc).toString()+" creada");
             }
             else{
                 System.out.println("Ya existe un archivo con ese nombre");

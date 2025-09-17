@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.util.Scanner;
 
+import ClasesOpcionesEjecucion.Opcion1GeneradorReferencias;
+
 public class SimuladorUsoMemoria 
 {
     /*
@@ -50,6 +52,14 @@ public class SimuladorUsoMemoria
             //Tamaños de las matrices guardados como [2x2, 4x4, 3x4... ]
             String[] listTamanios = tamanios.split(",");
 
+            for(int p = 1; p<=NPROC; p++)
+            {
+                String dimension = listTamanios[p-1];
+                String[] filasYCol = dimension.split("x");
+                int filas = Integer.parseInt(filasYCol[0]);
+                int columnas = Integer.parseInt(filasYCol[1]);
+                Opcion1GeneradorReferencias.generarReferencia(p,TP,filas,columnas);
+            }
 
         }
 
