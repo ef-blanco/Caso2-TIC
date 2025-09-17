@@ -38,18 +38,30 @@ public class Opcion1GeneradorReferencias
             fWriter.write("NR="+((Integer)nr).toString());
             fWriter.write("NP="+((Integer)numPag).toString());
 
-            //TODO:Falta escribir en el archivo las distintas posiciones de las matrices
-
-            int MemDisponible = numPag*tamanioPag;
-            for(int i = 0; i<nr; i++)
+            //Se escriben en el archivo las referencias de las distintas posiciones de las matrices
+            int desplazamiento = 0;
+            int pagina = 0;
+            for(int k = 0; k<3; k++)
             {
-                //Primera Matriz
-                if(i<=(nr-1))
+                for(int i = 0; i<filas; i++)
                 {
-                    if(i<=(columnas-1))
+                    for(int j = 0; j<columnas; j++)
                     {
-                        
-                    } 
+                        String numMatriz = ((Integer) (1+k)).toString();
+                        if (desplazamiento == tamanioPag)
+                        {
+                            desplazamiento = 0;
+                            pagina++;
+                        } 
+                        String accion = "r";
+                        if(k==2)
+                        {
+                            accion = "w";
+                        }
+                        //Linea en formato MX: [i-j],pagina,desplazamiento,accion
+                        String lineaRef = "M"+numMatriz+": "+"["+((Integer)i).toString()+"-"+((Integer)j).toString()+"],"+((Integer)pagina).toString()+","+((Integer)desplazamiento).toString()+","+accion;
+                        fWriter.write(lineaRef);
+                    }
                 }
             }
 
