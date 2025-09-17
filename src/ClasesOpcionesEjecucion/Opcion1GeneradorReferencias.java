@@ -21,7 +21,7 @@ public class Opcion1GeneradorReferencias
         int numPag = (int) Math.ceilDiv(tamanioMatrices, nr);
 
         try{
-            String path = "C:/Users/57313/Desktop/Uniandes/TIC/Caso2/referencias_procs/proc"+((Integer)numProc).toString()+".txt";
+            String path = "./referencias_procs/proc"+((Integer)numProc).toString()+".txt";
             File proc = new File(path);
             if(proc.createNewFile())
             {
