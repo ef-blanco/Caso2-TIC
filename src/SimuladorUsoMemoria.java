@@ -1,10 +1,13 @@
+
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 import ClasesOpcionesEjecucion.Opcion1GeneradorReferencias;
+import ClasesOpcionesEjecucion.Opcion2SimulacionEjecucion;
 
-public class SimuladorUsoMemoria 
+class SimuladorUsoMemoria 
 {
     /*
      * Esta es la clase principal de este proyecto. Esta clase será la encargada de recibir
@@ -31,13 +34,13 @@ public class SimuladorUsoMemoria
             System.out.println("Ingrese la ruta del archivo con los datos de configuración:\n");
             String rutaArchivo = scanner.nextLine();
 
-            try{
-                System.setIn(new FileInputStream(rutaArchivo));
-                scanner = new Scanner(System.in);
-            }
-            catch(FileNotFoundException e){
-                System.err.println("Archivo no encontrado "+rutaArchivo);
-            }
+            try {
+    File archivoConfig = new File(rutaArchivo);
+    scanner = new Scanner(archivoConfig);
+} catch (FileNotFoundException e) {
+    System.err.println("Archivo no encontrado: " + rutaArchivo);
+    return;
+}
 
             //Se obtienen los datos del archivo de configuración
             String linea = scanner.nextLine();
@@ -67,6 +70,21 @@ public class SimuladorUsoMemoria
             }
 
         }
+
+        else if(opcion.equals("2")) {
+            System.out.println("Ingrese el número de procesos:");
+            int numProcesos = Integer.parseInt(scanner.nextLine());
+            
+            System.out.println("Ingrese el número total de marcos:");
+            int numMarcos = Integer.parseInt(scanner.nextLine());
+            
+            if(numMarcos % numProcesos != 0) {
+                System.out.println("Error: El número de marcos debe ser múltiplo del número de procesos");
+                return;
+            }
+            
+            Opcion2SimulacionEjecucion.simularEjecucion(numProcesos, numMarcos);
+}
 
         scanner.close();
         
