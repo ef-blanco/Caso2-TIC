@@ -17,7 +17,7 @@ public static void generarReferencia(int numProc, int tamanioPag, int filas, int
 {
     int nr = filas*columnas*3;
     int tamanioMatrices = nr*4;
-    int numPag = (int) Math.ceilDiv(tamanioMatrices, tamanioPag);
+    int numPag = (tamanioMatrices + tamanioPag - 1)/tamanioPag;
 
     try{
         String path = "./referencias_procs/proc"+((Integer)numProc).toString()+".txt";
