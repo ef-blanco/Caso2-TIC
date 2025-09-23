@@ -98,39 +98,44 @@ public static void simularEjecucion(int numProcesos, int totalMarcos) {
 
         String[] partes = referencia.split(",");
         int paginaVirtual = Integer.parseInt(partes[1]);
+
         if (p.getTablaPaginas().containsKey(paginaVirtual)) {
             int marco = p.getTablaPaginas().get(paginaVirtual);
             ultimoAccesoMarco.put(marco, tiempo);
             p.registrarHit(); 
             return false; 
-            }
+        }
 
-            boolean reemplazo = false;
-            int marcoAsignar = -1;
-
+        boolean reemplazo = false;
+        int marcoAsignar = -1;
 
         for (int marco : p.getMarcosAsignados()) {
             if (!p.getTablaPaginas().containsValue(marco)) {
                 marcoAsignar = marco;
-                break;}}
-
-            
+                break;
+            }
+        }
 
         if (marcoAsignar == -1) {
             marcoAsignar = encontrarMarcoLRU(p, marcosProceso, ultimoAccesoMarco);
             int paginaVieja = obtenerPaginaPorMarco(p.getTablaPaginas(), marcoAsignar);
-            if (paginaVieja != -1) p.getTablaPaginas().remove(paginaVieja);
+            if (paginaVieja != -1) {
+                p.getTablaPaginas().remove(paginaVieja);
+                p.incrementarAccesosSwap(); 
+            }
             reemplazo = true;
+        } else {
+             p.incrementarAccesosSwap();
         }
 
         p.registrarFallo(reemplazo);
-
         marcosProceso.put(marcoAsignar, p.getId());
         p.getTablaPaginas().put(paginaVirtual, marcoAsignar);
         ultimoAccesoMarco.put(marcoAsignar, tiempo);
 
         return true; 
     }
+
 
 
     private static int encontrarMarcoLRU(Proceso p, Map<Integer, Integer> marcosProceso,Map<Integer, Long> ultimoAccesoMarco) {
