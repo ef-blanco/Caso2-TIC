@@ -72,6 +72,7 @@ public class Proceso {
 
         public void asignarMarco(int m) { marcosAsignados.add(m); }
         public void liberarMarcos() { marcosAsignados.clear(); }
+        public void incrementarAccesosSwap() {accesosSwap++;}
 
         public void registrarHit() { hits++; totalReferencias++; }
         public void registrarFallo(boolean requiereSwap) {
